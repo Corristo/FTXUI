@@ -61,23 +61,20 @@ endif ()
 add_library(ftxui::modules ALIAS ftxui-modules)
 
 if(FTXUI_ENABLE_INSTALL)
-
   include(GNUInstallDirs)
 
   install(TARGETS ftxui-modules
-    EXPORT ftxui-targets
+    EXPORT ftxui-module-targets
     FILE_SET CXX_MODULES
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ftxui
     FILE_SET HEADERS
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ftxui
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     INCLUDES
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/ftxui
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     )
-  install(EXPORT ftxui-targets
+  install(EXPORT ftxui-module-targets
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ftxui
-    CXX_MODULES_DIRECTORY ${CMAKE_INSTALL_LIBDIR}/cmake/ftxui
-    )
-  install(FILES my_package-config.cmake
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ftxui
-    )
+    CXX_MODULES_DIRECTORY .
+    NAMESPACE ftxui::
+  )
 endif()

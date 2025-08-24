@@ -4,3 +4,6 @@ include(CMakeFindDependencyMacro)
 find_dependency(Threads)
 
 include("${CMAKE_CURRENT_LIST_DIR}/ftxui-targets.cmake")
+if (EXISTS "${CMAKE_CURRENT_LIST_DIR}/ftxui-module-targets.cmake")
+  include("${CMAKE_CURRENT_LIST_DIR}/ftxui-module-targets.cmake")
+endif()
